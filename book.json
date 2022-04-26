@@ -1,0 +1,14 @@
+{
+    "title" : "NEST Document",
+    "description": "NEST Document",
+    "structure": {
+        "readme": "CONTRACTADDRESS.md"
+    },
+    "plugins": ["chapter-fold", "katex", "-sharing", "github"],
+    "pluginsConfig": {
+        "chapter-fold": {},
+        "github": {
+            "url": "https://github.com/NEST-Protocol"
+        }
+    }
+}
