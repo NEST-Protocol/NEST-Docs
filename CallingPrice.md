@@ -17,7 +17,7 @@
 
 <a href="https://github.com/NEST-Protocol/NEST-Oracle-V4.0/blob/main/contracts/NestBatchPlatform2.sol" target="_blank">Smart contract</a>
 
-## Request Price
+## Request Price(for contract)
 #### Get the latest trigger price
 
 ```
@@ -138,9 +138,15 @@ triggeredPrice requires less gas consumption, lastPrice must have the latest pri
 
 The example environment is the ethereum rinkeby test network.
 
+- Contract:0xc08e6a853241b9a08225eecf93f3b279fa7a1be7
+- ChannelId:0
+- Fee:0
 
-
-## Use Cases
+|Token|Address|PairIndex|
+|---|---|---|
+|HBTC|0xaE73d363Cb4aC97734E07e48B01D0a1FF5D1190B|0|
+|ETH|0x0000000000000000000000000000000000000000|1|
+|NEST|0xE313F3f49B647fBEDDC5F2389Edb5c93CBf4EE25|2|
 
 ### FORT:Use Instant Price
 
