@@ -117,7 +117,7 @@ function lastPriceListAndTriggeredPriceInfo(
 
 ## About channelId and pairIndex
 
-Anyone can open a channel and make a quote on it. A channel can contain multiple price pairs (they all have the same currency unit of denomination). It is similar to a binary array that locates the price to be queried by channelId and pairIndex.
+Anyone can open a channel and make a quote on it. A channel can contain multiple price pairs (they all have the same currency unit of denomination). It is similar to a two-dimensional arrays that locates the price to be queried by channelId and pairIndex.
 
 ## About the price call fee (for now)
 Each call to the price method needs to carry a call fee, which is allocated by the administrator of the quote channel.Current fee is 0.
