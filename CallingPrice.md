@@ -39,8 +39,9 @@ function triggeredPrice(
 |prices|uint[]|Price array, i \* 2 is the block where the ith price is located, and i \* 2 + 1 is the ith price|
 
 <a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
-
+<p>
 <img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST1.png?raw=true" alt="" style="max-width: 60%;">
+<p>
 
 > In block 14802456, 2000USDT = 0.069274BTC
 
