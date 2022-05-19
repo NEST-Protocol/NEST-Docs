@@ -18,6 +18,7 @@
 <a href="https://github.com/NEST-Protocol/NEST-Oracle-V4.0/blob/main/contracts/NestBatchPlatform2.sol" target="_blank">Smart contract</a>
 
 ## Request Price(for contract)
+
 #### Get the latest trigger price
 
 ```
@@ -37,6 +38,12 @@ function triggeredPrice(
 |---|---|---|
 |prices|uint[]|Price array, i \* 2 is the block where the ith price is located, and i \* 2 + 1 is the ith price|
 
+<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
+
+![](../Image/NEST1.png)
+
+> In block 14802456, 2000USDT = 0.069274BTC
+
 #### Get the full information of latest trigger price
 ```
 function triggeredPriceInfo(
@@ -54,6 +61,12 @@ function triggeredPriceInfo(
 |output|type|instruction|
 |---|---|---|
 |prices|uint[]|Price array, i \* 4 is the block where the ith price is located, i \* 4 + 1 is the ith price, i \* 4 + 2 is the ith average price and i \* 4 + 3 is the ith volatility|
+
+<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
+
+![](../Image/NEST2.png)
+
+> In block 14802456, 2000USDT=0.069274BTC, average price:2000USDT=0.069118234324991232BTC, volatility:17065492130
 
 #### Find the price at block number
 ```
@@ -75,6 +88,12 @@ function findPrice(
 |---|---|---|
 |prices|uint[]|Price array, i \* 2 is the block where the ith price is located, and i \* 2 + 1 is the ith price|
 
+<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
+
+![](../Image/NEST3.png)
+
+> In block 14802456, 2000USDT = 0.069274BTC
+
 #### Get the last (num) effective price
 ```
 function lastPriceList(
@@ -95,6 +114,12 @@ function lastPriceList(
 |---|---|---|
 |prices|uint[]|Result array, i \* count \* 2 to (i + 1) \* count \* 2 - 1 are the price results of group i quotation pairs|
 
+<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
+
+![](../Image/NEST4.png)
+
+> Read the latest 3 price information (BTC)
+
 #### Returns lastPriceList and triggered price info
 ```
 function lastPriceListAndTriggeredPriceInfo(
@@ -114,6 +139,12 @@ function lastPriceListAndTriggeredPriceInfo(
 |output|type|instruction|
 |---|---|---|
 |prices|uint[]|Result of group i quotation pair. Among them, the first two count are the latest prices, and the last four are: trigger price block number, trigger price, average price and volatility|
+
+<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
+
+![](../Image/NEST5.png)
+
+> Read the latest 3 price information (BTC),average price,volatility
 
 ## About channelId and pairIndex
 
