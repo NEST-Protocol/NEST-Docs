@@ -40,7 +40,7 @@ function triggeredPrice(
 
 <a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
 
-<img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST1.png?raw=true" alt="" width="400">
+<img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST1.png?raw=true" alt="" width="500">
 
 > In block 14802456, 2000USDT = 0.069274BTC
 
