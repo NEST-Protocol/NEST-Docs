@@ -40,7 +40,7 @@ function triggeredPrice(
 
 <a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
 
-![](https://github.com/NEST-Protocol/NEST-Docs/blob/main/Image/NEST1.png?raw=true)
+<img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST1.png?raw=true" alt="" style="max-width: 60%;">
 
 > In block 14802456, 2000USDT = 0.069274BTC
 
@@ -64,7 +64,7 @@ function triggeredPriceInfo(
 
 <a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
 
-![](https://github.com/NEST-Protocol/NEST-Docs/blob/main/Image/NEST2.png?raw=true)
+<img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST2.png?raw=true" alt="" style="max-width: 60%;">
 
 > In block 14802456, 2000USDT=0.069274BTC, average price:2000USDT=0.069118234324991232BTC, volatility:17065492130
 
@@ -90,7 +90,7 @@ function findPrice(
 
 <a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
 
-![](https://github.com/NEST-Protocol/NEST-Docs/blob/main/Image/NEST3.png?raw=true)
+<img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST3.png?raw=true" alt="" style="max-width: 60%;">
 
 > In block 14802456, 2000USDT = 0.069274BTC
 
@@ -116,7 +116,7 @@ function lastPriceList(
 
 <a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
 
-![](https://github.com/NEST-Protocol/NEST-Docs/blob/main/Image/NEST4.png?raw=true)
+<img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST4.png?raw=true" alt="" style="max-width: 60%;">
 
 > Read the latest 3 price information (BTC)
 
@@ -142,7 +142,7 @@ function lastPriceListAndTriggeredPriceInfo(
 
 <a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
 
-![](https://github.com/NEST-Protocol/NEST-Docs/blob/main/Image/NEST5.png?raw=true)
+<img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST5.png?raw=true" alt="" style="max-width: 60%;">
 
 > Read the latest 3 price information (BTC),average price,volatility
 
