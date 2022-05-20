@@ -177,6 +177,9 @@ All prices in the documentation are in 2000 USDT, which is not fixed. Each chann
 
 <img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST6.png?raw=true" alt="" width="500">
 
+## Web display prices
+
+web shows 1 ETH = 2500 USDT, get ETH price data as 800000000000000000(decimals 18), which means 2000 USDT = 0.8 ETH. Web converted to show.
 
 ## Call example
 
