@@ -165,6 +165,8 @@ Each call to the price method needs to carry a call fee, which is allocated by t
 triggeredPrice may be delayed by one price compared to lastPrice. In most cases, they are the same. It depends on the offer density.
 triggeredPrice requires less gas consumption, lastPrice must have the latest price, but has higher gas consumption.
 
+<img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST7.png?raw=true" alt="" width="500">
+
 ## Price token and Price token unit
 
 All prices in the documentation are in 2000 USDT, which is not fixed. Each channel has its own Price token and Price token unit, please check it before calling.
