@@ -165,6 +165,17 @@ Each call to the price method needs to carry a call fee, which is allocated by t
 triggeredPrice may be delayed by one price compared to lastPrice. In most cases, they are the same. It depends on the offer density.
 triggeredPrice requires less gas consumption, lastPrice must have the latest price, but has higher gas consumption.
 
+## Price token and Price token unit
+
+All prices in the documentation are in 2000 USDT, which is not fixed. Each channel has its own Price token and Price token unit, please check it before calling.
+
+<a href="https://channel.nestprotocol.org/" target="_blank">Channel Information-Website</a>
+
+<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Read channel information from the contract</a>
+
+<img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST6.png?raw=true" alt="" width="500">
+
+
 ## Call example
 
 The example environment is the ethereum rinkeby test network.
@@ -190,9 +201,12 @@ The example environment is the ethereum rinkeby test network.
         uint fee, 
         address payback
     ) internal returns (uint[] memory prices) {
+
+        // -----GET NEST PRICE-----
         prices = INestBatchPrice2(NEST_OPEN_PRICE).lastPriceList {
             value: fee
         } (uint(tokenConfig.channelId), _pairIndices(uint(tokenConfig.pairIndex)), 2, payback);
+        // -----GET NEST PRICE-----
 
         prices[1] = _toUSDTPrice(prices[1]);
         prices[3] = _toUSDTPrice(prices[3]);
@@ -204,9 +218,12 @@ The example environment is the ethereum rinkeby test network.
         uint fee, 
         address payback
     ) internal returns (uint oraclePrice) {
+
+        // -----GET NEST PRICE-----
         uint[] memory prices = INestBatchPrice2(NEST_OPEN_PRICE).lastPriceList {
             value: fee
         } (uint(tokenConfig.channelId), _pairIndices(uint(tokenConfig.pairIndex)), 1, payback);
+        // -----GET NEST PRICE-----
 
         oraclePrice = _toUSDTPrice(prices[1]);
     }
@@ -218,9 +235,12 @@ The example environment is the ethereum rinkeby test network.
         uint fee, 
         address payback
     ) internal returns (uint oraclePrice) {
+
+        // -----GET NEST PRICE-----
         uint[] memory prices = INestBatchPrice2(NEST_OPEN_PRICE).findPrice {
             value: fee
         } (uint(tokenConfig.channelId), _pairIndices(uint(tokenConfig.pairIndex)), blockNumber, payback);
+        // -----GET NEST PRICE-----
 
         oraclePrice = _toUSDTPrice(prices[1]);
     }
@@ -248,14 +268,22 @@ The example environment is the ethereum rinkeby test network.
         if(uToken == address(USDT_ADDRESS)) {
             uint256[] memory pricesIndex = new uint256[](1);
             pricesIndex[0] = addressToPriceIndex[token];
+
+            // -----GET NEST PRICE-----
             uint256[] memory prices = _nestBatchPlatform.triggeredPriceInfo{value:msg.value}(CHANNELID, pricesIndex, payback);
+            // -----GET NEST PRICE-----
+
             require(prices[2] > 0, "Log:PriceController:!avg");
             return(prices[2], BASE_USDT_AMOUNT);
         } else {
             uint256[] memory pricesIndex = new uint256[](2);
             pricesIndex[0] = addressToPriceIndex[token];
             pricesIndex[1] = addressToPriceIndex[uToken];
+
+            // -----GET NEST PRICE-----
             uint256[] memory prices = _nestBatchPlatform.triggeredPriceInfo{value:msg.value}(CHANNELID, pricesIndex, payback);
+            // -----GET NEST PRICE-----
+
             require(prices[2] > 0 && prices[6] > 0, "Log:PriceController:!avg");
             return(prices[2], prices[6]);
         }
@@ -291,6 +319,8 @@ Market prices sometimes fluctuate too much, and there are some precautions to ta
         uint avgPriceTokenAmount,
         uint sigmaSQ
     ) {
+
+        // -----GET NEST PRICE-----
         (
             blockNumber, 
             priceTokenAmount,
@@ -301,6 +331,7 @@ Market prices sometimes fluctuate too much, and there are some precautions to ta
         ) = INestPriceFacade(NEST_PRICE_FACADE).latestPriceAndTriggeredPriceInfo { 
             value: msg.value 
         } (tokenAddress, payback);
+        // -----GET NEST PRICE-----
         
         _checkPrice(priceTokenAmount, avgPriceTokenAmount);
         priceEthAmount = 1 ether;
