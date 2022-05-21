@@ -2,7 +2,7 @@
     "title" : "NEST Document",
     "description": "NEST Document",
     "structure": {
-        "readme": "CONTRACTADDRESS.md"
+        "readme": "README.md"
     },
     "plugins": ["chapter-fold", "katex", "-sharing", "github"],
     "pluginsConfig": {
