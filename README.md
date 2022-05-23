@@ -75,7 +75,7 @@ Quotation -> Verified Quotation -> Verified Quotation -> Verified Quotation -> â
 
 ---
 
-## Contract address
+## Price contract
 
 ### mainnet
 - ETH: 0xE544cF993C7d477C7ef8E91D28aCA250D135aa03

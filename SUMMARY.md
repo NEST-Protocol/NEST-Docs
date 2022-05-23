@@ -6,7 +6,7 @@
     * [Verification](README.md#verification)
 * [Contract Address](README.md#contract-address)
 * [Price Calling](README.md#price-calling)
-    * [Contract address](README.md#contract-address)
+    * [Price contract](README.md#price-contract)
     * [Request Price(for contract)](README.md#request-pricefor-contract)
     * [About channelId and pairIndex](README.md#about-channelid-and-pairindex)
     * [About the price call fee (for now)](README.md#about-the-price-call-fee-for-now)
