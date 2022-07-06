@@ -4,6 +4,7 @@
     * [Valuation asset and quotation asset](README.md#valuation-asset-and-quotation-asset)
     * [Quotation](README.md#quotation)
     * [Verification](README.md#verification)
+    * [Mining volume](README.md#mining-volume)
 * [Contract Address](README.md#contract-address)
 * [Price Calling](README.md#price-calling)
     * [Price contract](README.md#price-contract)

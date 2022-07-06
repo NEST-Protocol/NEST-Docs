@@ -28,6 +28,14 @@ Quotation -> Verified Quotation -> Verified Quotation -> Verified Quotation -> â
 
 > To prevent exogenous funds in the market from attacking the oracle, the protocol allows the verifiers, only four times, to double the sizes of the valuation and quotation assets. This restriction does not apply to the collateral asset since it is endogenous to the system.
 
+#### Mining volume
+
+mining volume per block * number of blocks between last quotation and current quotation = mining volume of current block
+
+mining volume of current block / number of quotations within current block = mining volume per quotation 
+
+Mining volume per block will be annually attenuated to a proportion of the previous year. The attenuation lasts for 10 times, after which the mining volume keeps the same amount after the 10th attenuation. The attenuation starts from the initialization of the quotation track. Ethereum is calculated according to 2,400,000 blocks per year (depending on the block generation speed of different chains), and the attenuation proportion of current active quotation track(s) is set as 80%.
+
 # Contract Address
 
 ---
