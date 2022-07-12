@@ -17,6 +17,10 @@
     * [Error codes](README.md#error-codes)
 * [Guide](README.md#guide)
 * [Contract Addresses](README.md#contract-addresses)
+    * [ETH](README.md#eth)
+    * [BNB](README.md#bnb)
+    * [Polygon](README.md#polygon)
+    * [KCC](README.md#kcc)
 * [Developer support](README.md#developer-support)
 
 
