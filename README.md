@@ -1,7 +1,19 @@
 # Introduction
 
 ---
+# Overview
 
+# Technical reference
+
+## Smart contracts overview
+
+NEST is a binary smart contract system that provides developers with various smart contract libraries for DeFi, NFTs and GameFi development.
+
+## NEST Oracle
+
+### Whitepaper
+
+### Mechanisms
 #### Valuation asset and quotation asset
 
 Each quotation track requires a unified amount of valuation asset and quotation asset. Thus, to participate in the price quotation, the maker needs to provide sufficient quotation asset with the same value as the valuation asset.
@@ -36,69 +48,21 @@ mining volume of current block / number of quotations within current block = min
 
 Mining volume per block will be annually attenuated to a proportion of the previous year. The attenuation lasts for 10 times, after which the mining volume keeps the same amount after the 10th attenuation. The attenuation starts from the initialization of the quotation track. Ethereum is calculated according to 2,400,000 blocks per year (depending on the block generation speed of different chains), and the attenuation proportion of current active quotation track(s) is set as 80%.
 
-# Contract Address
+### Request Price(for contract)
 
----
+#### Price contract
 
-#### ETH
-| Name | Interfaces | mainnet |
-| ---- | ---- | ---- |
-| nest | IERC20 | 0x04abEdA201850aC0124161F037Efd70c74ddC74C |
-| usdt | IERC20 | 0xdAC17F958D2ee523a2206206994597C13D831ec7 |
-| hbtc | IERC20 | 0x0316EB71485b0Ab14103307bf65a021042c6d380 |
-| pusd | IERC20 | 0xCCEcC702Ec67309Bc3DDAF6a42E9e5a6b8Da58f0 |
-| nestGovernance | INestGovernance | 0xA2eFe217eD1E56C743aeEe1257914104Cf523cf5 |
-| nestBatchPlatform2 | INestBatchMining, INestBatchPriceView, INestBatchPrice2 | 0xE544cF993C7d477C7ef8E91D28aCA250D135aa03 |
-
-#### BSC
-| Name | Interfaces | bsc_main |
-| ---- | ---- | ---- |
-| nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
-| pusd | IERC20 | 0x9b2689525e07406D8A6fB1C40a1b86D2cd34Cbb2 |
-| peth | IERC20 | 0x556d8bF8bF7EaAF2626da679Aa684Bac347d30bB |
-| nestGovernance | INestGovernance | 0x7b5ee1Dc65E2f3EDf41c798e7bd3C22283C3D4bb |
-| nestOpenMining | INestOpenMining, INestOpenPrice, INestPriceView | 0x09CE0e021195BA2c1CDE62A8B187abf810951540 |
-
-#### Polygon
-| Name | Interfaces | polygon_main |
-| ---- | ---- | ---- |
-| nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
-| pusd | IERC20 | 0xf26D86043a3133Cc042221Ea178cAED7Fe0eE362 |
-| peth | IERC20 | 0x1E0967e10B5Ef10342d4D71da69c30332666C899 |
-| nestGovernance | INestGovernance | 0x7b5ee1Dc65E2f3EDf41c798e7bd3C22283C3D4bb |
-| nestBatchMining | INestBatchMining, INestBatchPrice2, INestBatchPriceView | 0x09CE0e021195BA2c1CDE62A8B187abf810951540 |
-
-#### KCC
-| Name | Interfaces | kcc_main |
-| ---- | ---- | ---- |
-| nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
-| pusd | IERC20 | 0x0C4CD7cA70172Af5f4BfCb7b0ACBf6EdFEaFab31 |
-| peth | IERC20 | 0x6cce8b9da777Ab10B11f4EA8510447431ED6ad1E |
-| pbtc | IERC20 | 0x32D4a9a94537a88118e878c56b93009Af234A6ce |
-| nestGovernance | INestGovernance | 0x7b5ee1Dc65E2f3EDf41c798e7bd3C22283C3D4bb |
-| nestBatchMining | INestBatchMining, INestBatchPrice2, INestBatchPriceView | 0x7DBe94A4D6530F411A1E7337c7eb84185c4396e6 |
-
-
-# Price Calling
-
----
-
-## Price contract
-
-### mainnet
+##### mainnet
 - ETH: 0xE544cF993C7d477C7ef8E91D28aCA250D135aa03
 - BSC: 0x09CE0e021195BA2c1CDE62A8B187abf810951540
 - Polygon: 0x09CE0e021195BA2c1CDE62A8B187abf810951540
 - KCC: 0x7DBe94A4D6530F411A1E7337c7eb84185c4396e6
 
-### test
+##### test
 - ETH_rinkeby: 0xc08e6a853241b9a08225eecf93f3b279fa7a1be7
 - BSC: 0xF2f9E62f52389EF223f5Fa8b9926e95386935277
 
-
 <a href="https://github.com/NEST-Protocol/NEST-Oracle-V4.0/blob/main/contracts/NestBatchPlatform2.sol" target="_blank">Smart contract</a>
-
-## Request Price(for contract)
 
 #### Get the latest trigger price
 
@@ -241,42 +205,8 @@ function lastPriceListAndTriggeredPriceInfo(
 
 > Read the latest 3 price information (BTC),average price,volatility
 
-## About channelId and pairIndex
 
-Anyone can open a channel and make a quote on it. A channel can contain multiple price pairs (they all have the same currency unit of denomination). It is similar to a two-dimensional arrays that locates the price to be queried by channelId and pairIndex.
-
-## About the price call fee (for now)
-Each call to the price method needs to carry a call fee, which is allocated by the administrator of the quote channel.Current fee is 0.
-
-|Network|Fee|
-|---|---|
-|Ethereum|0ETH|
-|BSC|0BNB|
-|polygon|0MATIC|
-|KCC|0KCS|
-
-## TriggeredPrice and LastPrice
-
-triggeredPrice may be delayed by one price compared to lastPrice. In most cases, they are the same. It depends on the offer density.
-triggeredPrice requires less gas consumption, lastPrice must have the latest price, but has higher gas consumption.
-
-<img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST7.png?raw=true" alt="" width="500">
-
-## Price token and Price token unit
-
-All prices in the documentation are in 2000 USDT, which is not fixed. Each channel has its own Price token and Price token unit, please check it before calling.
-
-<a href="https://channel.nestprotocol.org/" target="_blank">Channel Information-Website</a>
-
-<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Read channel information from the contract</a>
-
-<img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST6.png?raw=true" alt="" width="500">
-
-## Web display prices
-
-web shows 1 ETH = 2500 USDT, get ETH price data as 800000000000000000(decimals 18), which means 2000 USDT = 0.8 ETH. Web converted to show.
-
-## Call example
+### Call example
 
 The example environment is the ethereum rinkeby test network.
 
@@ -290,7 +220,42 @@ The example environment is the ethereum rinkeby test network.
 |ETH|0x0000000000000000000000000000000000000000|1|
 |NEST|0xE313F3f49B647fBEDDC5F2389Edb5c93CBf4EE25|2|
 
-### FORT:Use Instant Price
+#### About channelId and pairIndex
+
+Anyone can open a channel and make a quote on it. A channel can contain multiple price pairs (they all have the same currency unit of denomination). It is similar to a two-dimensional arrays that locates the price to be queried by channelId and pairIndex.
+
+#### About the price call fee (for now)
+Each call to the price method needs to carry a call fee, which is allocated by the administrator of the quote channel.Current fee is 0.
+
+|Network|Fee|
+|---|---|
+|Ethereum|0ETH|
+|BSC|0BNB|
+|polygon|0MATIC|
+|KCC|0KCS|
+
+#### TriggeredPrice and LastPrice
+
+triggeredPrice may be delayed by one price compared to lastPrice. In most cases, they are the same. It depends on the offer density.
+triggeredPrice requires less gas consumption, lastPrice must have the latest price, but has higher gas consumption.
+
+<img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST7.png?raw=true" alt="" width="500">
+
+#### Price token and Price token unit
+
+All prices in the documentation are in 2000 USDT, which is not fixed. Each channel has its own Price token and Price token unit, please check it before calling.
+
+<a href="https://channel.nestprotocol.org/" target="_blank">Channel Information-Website</a>
+
+<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Read channel information from the contract</a>
+
+<img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST6.png?raw=true" alt="" width="500">
+
+#### Web display prices
+
+web shows 1 ETH = 2500 USDT, get ETH price data as 800000000000000000(decimals 18), which means 2000 USDT = 0.8 ETH. Web converted to show.
+
+#### FORT:Use Instant Price
 
 <a href="https://github.com/FORT-Protocol/FORT-V1.1/blob/main/contracts/custom/FortPriceAdapter.sol#L36" target="_blank">FORT Smart contract</a>
 
@@ -346,7 +311,7 @@ The example environment is the ethereum rinkeby test network.
     }
 ```
 
-### Parasset:Use the average price
+#### Parasset:Use the average price
 
 <a href="https://github.com/Parasset/ParassetV2-Protocol/blob/main/contracts/PriceController2.sol#L44" target="_blank">Parasset Smart contract</a>
 
@@ -390,7 +355,7 @@ The example environment is the ethereum rinkeby test network.
     }
 ```
 
-### Preventing drastic price fluctuations
+#### Preventing drastic price fluctuations
 
 Market prices sometimes fluctuate too much, and there are some precautions to take when using prices, such as: comparing the deviation of the instant price with the average price, and not continuing to trade if it is too large.
 
@@ -438,3 +403,71 @@ Market prices sometimes fluctuate too much, and there are some precautions to ta
         avgPriceEthAmount = 1 ether;
     }
 ```
+
+## NEST Probability Virtual Machine(PVM)
+
+### Swap
+
+### Future
+
+#### Buy future
+
+### Option
+
+### Lottery
+
+## Contract deloyments
+
+## Error codes
+
+# Guide
+
+# Contract Addresses
+#### ETH
+| Name | Interfaces | mainnet |
+| ---- | ---- | ---- |
+| nest | IERC20 | 0x04abEdA201850aC0124161F037Efd70c74ddC74C |
+| usdt | IERC20 | 0xdAC17F958D2ee523a2206206994597C13D831ec7 |
+| hbtc | IERC20 | 0x0316EB71485b0Ab14103307bf65a021042c6d380 |
+| pusd | IERC20 | 0xCCEcC702Ec67309Bc3DDAF6a42E9e5a6b8Da58f0 |
+| nestGovernance | INestGovernance | 0xA2eFe217eD1E56C743aeEe1257914104Cf523cf5 |
+| nestBatchPlatform2 | INestBatchMining, INestBatchPriceView, INestBatchPrice2 | 0xE544cF993C7d477C7ef8E91D28aCA250D135aa03 |
+
+#### BSC
+| Name | Interfaces | bsc_main |
+| ---- | ---- | ---- |
+| nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
+| pusd | IERC20 | 0x9b2689525e07406D8A6fB1C40a1b86D2cd34Cbb2 |
+| peth | IERC20 | 0x556d8bF8bF7EaAF2626da679Aa684Bac347d30bB |
+| nestGovernance | INestGovernance | 0x7b5ee1Dc65E2f3EDf41c798e7bd3C22283C3D4bb |
+| nestOpenMining | INestOpenMining, INestOpenPrice, INestPriceView | 0x09CE0e021195BA2c1CDE62A8B187abf810951540 |
+
+#### Polygon
+| Name | Interfaces | polygon_main |
+| ---- | ---- | ---- |
+| nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
+| pusd | IERC20 | 0xf26D86043a3133Cc042221Ea178cAED7Fe0eE362 |
+| peth | IERC20 | 0x1E0967e10B5Ef10342d4D71da69c30332666C899 |
+| nestGovernance | INestGovernance | 0x7b5ee1Dc65E2f3EDf41c798e7bd3C22283C3D4bb |
+| nestBatchMining | INestBatchMining, INestBatchPrice2, INestBatchPriceView | 0x09CE0e021195BA2c1CDE62A8B187abf810951540 |
+
+#### KCC
+| Name | Interfaces | kcc_main |
+| ---- | ---- | ---- |
+| nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
+| pusd | IERC20 | 0x0C4CD7cA70172Af5f4BfCb7b0ACBf6EdFEaFab31 |
+| peth | IERC20 | 0x6cce8b9da777Ab10B11f4EA8510447431ED6ad1E |
+| pbtc | IERC20 | 0x32D4a9a94537a88118e878c56b93009Af234A6ce |
+| nestGovernance | INestGovernance | 0x7b5ee1Dc65E2f3EDf41c798e7bd3C22283C3D4bb |
+| nestBatchMining | INestBatchMining, INestBatchPrice2, INestBatchPriceView | 0x7DBe94A4D6530F411A1E7337c7eb84185c4396e6 |
+
+# Developer support
+
+
+
+
+
+
+
+
+
