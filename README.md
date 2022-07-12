@@ -411,6 +411,67 @@ Market prices sometimes fluctuate too much, and there are some precautions to ta
 ### Future
 
 #### Buy future
+```
+    function buy(
+        address tokenAddress,
+        uint lever,
+        bool orientation,
+        uint nestAmount
+    ) external payable override
+```
+
+|input|type|instruction|
+|---|---|---|
+|tokenAddress|address|Target token address, 0 means eth|
+|lever|uint|Lever of future|
+|orientation|bool|true: call, false: put|
+|nestAmount|uint|Amount of paid NEST|
+
+#### Sell future
+
+```
+    function sell(uint index, uint amount) external payable override
+```
+
+|input|type|instruction|
+|---|---|---|
+|index|uint|Index of future|
+|amount|uint|Amount to sell|
+
+#### Settle future
+
+```
+    function settle(uint index, address[] calldata addresses) external payable override
+```
+|input|type|instruction|
+|---|---|---|
+|index|uint|Index of future|
+|addresses|address[]|Target addresses|
+
+
+#### Get information of future
+future index contains a multiplier information and a call or put information.
+
+```
+    function getFutureInfo(
+        address tokenAddress, 
+        uint lever,
+        bool orientation
+    ) external view override returns (FutureView memory)
+```
+
+|input|type|instruction|
+|---|---|---|
+|tokenAddress|address|Target token address, 0 means eth|
+|lever|uint|Lever of future|
+|orientation|bool|true: call, false: put|
+
+|output|type|instruction|
+|---|---|---|
+|index|uint|future index|
+|tokenAddress|address|Target token address, 0 means eth|
+|lever|uint|Lever of future|
+|orientation|bool|true: call, false: put|
 
 ### Option
 

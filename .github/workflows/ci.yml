@@ -1,0 +1,51 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - test
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '10.21.0'
+
+      - name: install pacakges
+        run: npm install
+
+      - name: install gitbook pacakges
+        run: npx gitbook install
+
+      - name: build
+        run: npx gitbook build
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: gitbook
+          path: _book/
+
+  deploy-test:
+    environment: test
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: gitbook
+          path: _book/
+      - name: upload to web3
+        uses: web3-storage/add-to-web3@v1.0.0
+        with:
+          path_to_add: _book
+          web3_token: ${{ secrets.WEB3_KEY }}
+          web3_api: https://api.web3.storage
+          wrap_with_directory: false
