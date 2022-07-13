@@ -1,10 +1,52 @@
 # Overview
-
-# Technical reference
-
-## Smart contracts overview
+## What is NEST?
 
 NEST is a binary smart contract system that provides developers with various smart contract libraries for DeFi, NFTs and GameFi development.
+
+# Guide
+## Set Up Your Local Environment
+This guide describes how to set up your environment using a specific toolset: Node.js + npm + hardhat. It also shows you how to install the NEST contracts, which are required for the contract examples in the NEST Docs guides.
+
+## Create a Node.js Project
+1. Download and install Node.js and npm.
+2. Create a new directory and navigate to it. Also, create a new node project with npm init.
+
+## Install Hardhat
+1. Install Hardhat, a development environment to compile, deploy, test, and debug your Smart Contracts.
+
+```
+$ npm add --save-dev hardhat
+```
+
+2. Create a new hardhat config file, which you can use for compiling and testing contracts. For an example of how a typical smart contract repo is structure, select the "create a sample project" option during setup.
+
+```
+$ npx hardhat
+```
+
+## Set the Solidity Version for Hardhat
+For this example, we'll need to change ./hardhat.config.js to include the appropriate solidity version for compiling the Uniswap V3 contracts. If you are using Hardhat's example project, you can skip this step.
+
+```
+module.exports = {
+  solidity: '0.8.9',
+}
+```
+
+## Compile Your Contracts
+```
+$ npx hardhat compile
+```
+If everything worked correctly, and you used hardhat's simple example project, you should see the following output:
+```
+Downloading compiler 0.8.4
+Compiled 2 Solidity files successfully
+✨  Done in 6.75s.
+```
+
+
+
+# Technical reference
 
 ## NEST Oracle
 
@@ -250,9 +292,8 @@ All prices in the documentation are in 2000 USDT, which is not fixed. Each chann
 
 web shows 1 ETH = 2500 USDT, get ETH price data as 800000000000000000(decimals 18), which means 2000 USDT = 0.8 ETH. Web converted to show.
 
-#### FORT:Use Instant Price
-
-<a href="https://github.com/FORT-Protocol/FORT-V1.1/blob/main/contracts/custom/FortPriceAdapter.sol#L36" target="_blank">FORT Smart contract</a>
+#### Examples:
+##### Use Instant Price
 
 ```
     // Query latest 2 price
@@ -306,9 +347,7 @@ web shows 1 ETH = 2500 USDT, get ETH price data as 800000000000000000(decimals 1
     }
 ```
 
-#### Parasset:Use the average price
-
-<a href="https://github.com/Parasset/ParassetV2-Protocol/blob/main/contracts/PriceController2.sol#L44" target="_blank">Parasset Smart contract</a>
+##### Use the average price
 
 ```
     /// @dev Get price
@@ -350,11 +389,9 @@ web shows 1 ETH = 2500 USDT, get ETH price data as 800000000000000000(decimals 1
     }
 ```
 
-#### Preventing drastic price fluctuations
+##### Preventing drastic price fluctuations
 
 Market prices sometimes fluctuate too much, and there are some precautions to take when using prices, such as: comparing the deviation of the instant price with the average price, and not continuing to trade if it is too large.
-
-<a href="https://github.com/Computable-Finance/CoFiX-V2.1/blob/nest4.0/contracts/CoFiXController.sol#L31" target="_blank">CoFix Smart contract</a>
 
 ```
     /// @dev Query latest price info
@@ -539,7 +576,7 @@ future index contains a multiplier information and a call or put information.
 |balance|uint|option shares|
 |owner|address|Target address|
 
-### Lottery
+### Roll
 
 #### start a roll
 
@@ -591,6 +628,45 @@ future index contains a multiplier information and a call or put information.
 
 ## Contract deloyments
 
+Contract address:
+### ETH
+| Name | Interfaces | mainnet |
+| ---- | ---- | ---- |
+| nest | IERC20 | 0x04abEdA201850aC0124161F037Efd70c74ddC74C |
+| usdt | IERC20 | 0xdAC17F958D2ee523a2206206994597C13D831ec7 |
+| hbtc | IERC20 | 0x0316EB71485b0Ab14103307bf65a021042c6d380 |
+| pusd | IERC20 | 0xCCEcC702Ec67309Bc3DDAF6a42E9e5a6b8Da58f0 |
+| nestGovernance | INestGovernance | 0xA2eFe217eD1E56C743aeEe1257914104Cf523cf5 |
+| nestBatchPlatform2 | INestBatchMining, INestBatchPriceView, INestBatchPrice2 | 0xE544cF993C7d477C7ef8E91D28aCA250D135aa03 |
+
+### BNB
+| Name | Interfaces | bnb_main |
+| ---- | ---- | ---- |
+| nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
+| pusd | IERC20 | 0x9b2689525e07406D8A6fB1C40a1b86D2cd34Cbb2 |
+| peth | IERC20 | 0x556d8bF8bF7EaAF2626da679Aa684Bac347d30bB |
+| nestGovernance | INestGovernance | 0x7b5ee1Dc65E2f3EDf41c798e7bd3C22283C3D4bb |
+| nestOpenMining | INestOpenMining, INestOpenPrice, INestPriceView | 0x09CE0e021195BA2c1CDE62A8B187abf810951540 |
+
+### Polygon
+| Name | Interfaces | polygon_main |
+| ---- | ---- | ---- |
+| nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
+| pusd | IERC20 | 0xf26D86043a3133Cc042221Ea178cAED7Fe0eE362 |
+| peth | IERC20 | 0x1E0967e10B5Ef10342d4D71da69c30332666C899 |
+| nestGovernance | INestGovernance | 0x7b5ee1Dc65E2f3EDf41c798e7bd3C22283C3D4bb |
+| nestBatchMining | INestBatchMining, INestBatchPrice2, INestBatchPriceView | 0x09CE0e021195BA2c1CDE62A8B187abf810951540 |
+
+### KCC
+| Name | Interfaces | kcc_main |
+| ---- | ---- | ---- |
+| nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
+| pusd | IERC20 | 0x0C4CD7cA70172Af5f4BfCb7b0ACBf6EdFEaFab31 |
+| peth | IERC20 | 0x6cce8b9da777Ab10B11f4EA8510447431ED6ad1E |
+| pbtc | IERC20 | 0x32D4a9a94537a88118e878c56b93009Af234A6ce |
+| nestGovernance | INestGovernance | 0x7b5ee1Dc65E2f3EDf41c798e7bd3C22283C3D4bb |
+| nestBatchMining | INestBatchMining, INestBatchPrice2, INestBatchPriceView | 0x7DBe94A4D6530F411A1E7337c7eb84185c4396e6 |
+
 ## Error codes
 ### NestBuybackPool.sol
 - "NBP:not router"
@@ -641,87 +717,7 @@ future index contains a multiplier information and a call or put information.
 - "NM:!accounts"
 - "NBM:can't convert to uint96"
 
-# Guide
-## Set Up Your Local Environment
-This guide describes how to set up your environment using a specific toolset: Node.js + npm + hardhat. It also shows you how to install the NEST contracts, which are required for the contract examples in the NEST Docs guides.
 
-## Create a Node.js Project
-1. Download and install Node.js and npm.
-2. Create a new directory and navigate to it. Also, create a new node project with npm init.
-
-## Install Hardhat
-1. Install Hardhat, a development environment to compile, deploy, test, and debug your Smart Contracts.
-
-```
-$ npm add --save-dev hardhat
-```
-
-2. Create a new hardhat config file, which you can use for compiling and testing contracts. For an example of how a typical smart contract repo is structure, select the "create a sample project" option during setup.
-
-```
-$ npx hardhat
-```
-
-## Set the Solidity Version for Hardhat
-For this example, we'll need to change ./hardhat.config.js to include the appropriate solidity version for compiling the Uniswap V3 contracts. If you are using Hardhat's example project, you can skip this step.
-
-```
-module.exports = {
-  solidity: '0.8.9',
-}
-```
-
-## Compile Your Contracts
-```
-$ npx hardhat compile
-```
-If everything worked correctly, and you used hardhat's simple example project, you should see the following output:
-```
-Downloading compiler 0.8.4
-Compiled 2 Solidity files successfully
-✨  Done in 6.75s.
-```
-
-# Contract Addresses
-#### ETH
-| Name | Interfaces | mainnet |
-| ---- | ---- | ---- |
-| nest | IERC20 | 0x04abEdA201850aC0124161F037Efd70c74ddC74C |
-| usdt | IERC20 | 0xdAC17F958D2ee523a2206206994597C13D831ec7 |
-| hbtc | IERC20 | 0x0316EB71485b0Ab14103307bf65a021042c6d380 |
-| pusd | IERC20 | 0xCCEcC702Ec67309Bc3DDAF6a42E9e5a6b8Da58f0 |
-| nestGovernance | INestGovernance | 0xA2eFe217eD1E56C743aeEe1257914104Cf523cf5 |
-| nestBatchPlatform2 | INestBatchMining, INestBatchPriceView, INestBatchPrice2 | 0xE544cF993C7d477C7ef8E91D28aCA250D135aa03 |
-
-#### BNB
-| Name | Interfaces | bnb_main |
-| ---- | ---- | ---- |
-| nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
-| pusd | IERC20 | 0x9b2689525e07406D8A6fB1C40a1b86D2cd34Cbb2 |
-| peth | IERC20 | 0x556d8bF8bF7EaAF2626da679Aa684Bac347d30bB |
-| nestGovernance | INestGovernance | 0x7b5ee1Dc65E2f3EDf41c798e7bd3C22283C3D4bb |
-| nestOpenMining | INestOpenMining, INestOpenPrice, INestPriceView | 0x09CE0e021195BA2c1CDE62A8B187abf810951540 |
-
-#### Polygon
-| Name | Interfaces | polygon_main |
-| ---- | ---- | ---- |
-| nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
-| pusd | IERC20 | 0xf26D86043a3133Cc042221Ea178cAED7Fe0eE362 |
-| peth | IERC20 | 0x1E0967e10B5Ef10342d4D71da69c30332666C899 |
-| nestGovernance | INestGovernance | 0x7b5ee1Dc65E2f3EDf41c798e7bd3C22283C3D4bb |
-| nestBatchMining | INestBatchMining, INestBatchPrice2, INestBatchPriceView | 0x09CE0e021195BA2c1CDE62A8B187abf810951540 |
-
-#### KCC
-| Name | Interfaces | kcc_main |
-| ---- | ---- | ---- |
-| nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
-| pusd | IERC20 | 0x0C4CD7cA70172Af5f4BfCb7b0ACBf6EdFEaFab31 |
-| peth | IERC20 | 0x6cce8b9da777Ab10B11f4EA8510447431ED6ad1E |
-| pbtc | IERC20 | 0x32D4a9a94537a88118e878c56b93009Af234A6ce |
-| nestGovernance | INestGovernance | 0x7b5ee1Dc65E2f3EDf41c798e7bd3C22283C3D4bb |
-| nestBatchMining | INestBatchMining, INestBatchPrice2, INestBatchPriceView | 0x7DBe94A4D6530F411A1E7337c7eb84185c4396e6 |
-
-# Developer support
 
 
 
