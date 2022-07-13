@@ -5,7 +5,7 @@ NEST is a binary smart contract system that provides developers with various sma
 
 # Guide
 ## Set Up Your Local Environment
-This guide describes how to set up your environment using a specific toolset: Node.js + npm + hardhat. It also shows you how to install the NEST contracts, which are required for the contract examples in the NEST Docs guides.
+This guide describes how to set up your environment using a specific toolset: Node.js + npm + hardhat. It also shows you how to use the NEST contracts, which are required for the contract examples in the NEST Docs guides.
 
 ## Create a Node.js Project
 1. Download and install Node.js and npm.
@@ -25,7 +25,7 @@ $ npx hardhat
 ```
 
 ## Set the Solidity Version for Hardhat
-For this example, we'll need to change ./hardhat.config.js to include the appropriate solidity version for compiling the Uniswap V3 contracts. If you are using Hardhat's example project, you can skip this step.
+For this example, we'll need to change ./hardhat.config.js to include the appropriate solidity version for compiling the NEST contracts. If you are using Hardhat's example project, you can skip this step.
 
 ```
 module.exports = {
@@ -41,17 +41,17 @@ If everything worked correctly, and you used hardhat's simple example project, y
 ```
 Downloading compiler 0.8.4
 Compiled 2 Solidity files successfully
-✨  Done in 6.75s.
+✨  Done in 3.25s.
 ```
 
 
 
-# Technical reference
+# Technical Reference
 
 ## NEST Oracle
 
 ### Mechanisms
-#### Valuation asset and quotation asset
+#### Valuation Asset and Auotation Asset
 
 Each quotation track requires a unified amount of valuation asset and quotation asset. Thus, to participate in the price quotation, the maker needs to provide sufficient quotation asset with the same value as the valuation asset.
 
@@ -77,7 +77,7 @@ Quotation -> Verified Quotation -> Verified Quotation -> Verified Quotation -> �
 
 > To prevent exogenous funds in the market from attacking the oracle, the protocol allows the verifiers, only four times, to double the sizes of the valuation and quotation assets. This restriction does not apply to the collateral asset since it is endogenous to the system.
 
-#### Mining volume
+#### Mining Volume
 
 mining volume per block * number of blocks between last quotation and current quotation = mining volume of current block
 
@@ -85,9 +85,9 @@ mining volume of current block / number of quotations within current block = min
 
 Mining volume per block will be annually attenuated to a proportion of the previous year. The attenuation lasts for 10 times, after which the mining volume keeps the same amount after the 10th attenuation. The attenuation starts from the initialization of the quotation track. Ethereum is calculated according to 2,400,000 blocks per year (depending on the block generation speed of different chains), and the attenuation proportion of current active quotation track(s) is set as 80%.
 
-### Request Price(for contract)
+### Request Price for Contract
 
-#### Price contract
+#### Price Contract
 
 ##### mainnet
 - ETH: 0xE544cF993C7d477C7ef8E91D28aCA250D135aa03
@@ -99,9 +99,9 @@ Mining volume per block will be annually attenuated to a proportion of the previ
 - ETH_rinkeby: 0xc08e6a853241b9a08225eecf93f3b279fa7a1be7
 - BSC: 0xF2f9E62f52389EF223f5Fa8b9926e95386935277
 
-<a href="https://github.com/NEST-Protocol/NEST-Oracle-V4.0/blob/main/contracts/NestBatchPlatform2.sol" target="_blank">Smart contract</a>
+<a href="https://github.com/NEST-Protocol/NEST-Oracle-V4.0/blob/main/contracts/NestBatchPlatform2.sol" target="_blank">Smart Contract</a>
 
-#### Get the latest trigger price
+#### Get the Latest Triggered Price
 
 Get the latest trigger price.The NEST price is a weighted average of all prices in the same block.New quotes and close operations trigger the calculation of prices that are already in effect earlier, while volatility and historical average prices are calculated.
 
@@ -122,13 +122,13 @@ function triggeredPrice(
 |---|---|---|
 |prices|uint[]|Price array, i \* 2 is the block where the ith price is located, and i \* 2 + 1 is the ith price|
 
-<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
+<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Lastest Triggered Price Off-chain Reading(Contract CANNOT Use)</a>
 
 <img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST1.png?raw=true" alt="" width="500">
 
 > In block 14802456, 2000USDT = 0.069274BTC
 
-#### Get the full information of latest trigger price
+#### Get the Full Information of Latest Triggered Price
 
 Get the latest departure price and average price volatility information.
 
@@ -149,13 +149,13 @@ function triggeredPriceInfo(
 |---|---|---|
 |prices|uint[]|Price array, i \* 4 is the block where the ith price is located, i \* 4 + 1 is the ith price, i \* 4 + 2 is the ith average price and i \* 4 + 3 is the ith volatility|
 
-<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
+<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Lastest Triggered Price and Volatility Off-chain Reading(Contract CANNOT Use)</a>
 
 <img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST2.png?raw=true" alt="" width="500">
 
 > In block 14802456, 2000USDT=0.069274BTC, average price:2000USDT=0.069118234324991232BTC, volatility:17065492130
 
-#### Find the price at block number
+#### Find the Price at Block Number
 
 Find the price in effect on the target historical block, or if there is no offer on the target block, go forward and find the most recent price in effect.
 
@@ -178,13 +178,13 @@ function findPrice(
 |---|---|---|
 |prices|uint[]|Price array, i \* 2 is the block where the ith price is located, and i \* 2 + 1 is the ith price|
 
-<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
+<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Find Price Off-chain Reading(Contract CANNOT Use)</a>
 
 <img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST3.png?raw=true" alt="" width="500">
 
 > In block 14802456, 2000USDT = 0.069274BTC
 
-#### Get the last (num) effective price
+#### Get the Last (num) Effective Price
 
 Get the latest count of prices in effect.
 
@@ -207,13 +207,13 @@ function lastPriceList(
 |---|---|---|
 |prices|uint[]|Result array, i \* count \* 2 to (i + 1) \* count \* 2 - 1 are the price results of group i quotation pairs|
 
-<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
+<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Last Price Off-chain Reading(Contract CANNOT Use)</a>
 
 <img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST4.png?raw=true" alt="" width="500">
 
 > Read the latest 3 price information (BTC)
 
-#### Returns lastPriceList and triggered price info
+#### Returns LastPriceList and Triggered Price Info
 
 Returns both the lastPriceList and the triggeredPriceInfo interfaces.
 
@@ -234,16 +234,16 @@ function lastPriceListAndTriggeredPriceInfo(
 
 |output|type|instruction|
 |---|---|---|
-|prices|uint[]|Result of group i quotation pair. Among them, the first two count are the latest prices, and the last four are: trigger price block number, trigger price, average price and volatility|
+|prices|uint[]|Result of group i quotation pair. Among them, the first two count are the latest prices, and the last four are: triggered price block number, triggered price, average price and volatility|
 
-<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Off-chain reading(Prohibit contract use)</a>
+<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Last Price and Triggered Price Off-chain Reading(Contract CANNOT Use)</a>
 
 <img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST5.png?raw=true" alt="" width="500">
 
 > Read the latest 3 price information (BTC),average price,volatility
 
 
-### Call example
+### Call Example
 
 The example environment is the ethereum rinkeby test network.
 
@@ -257,11 +257,11 @@ The example environment is the ethereum rinkeby test network.
 |ETH|0x0000000000000000000000000000000000000000|1|
 |NEST|0xE313F3f49B647fBEDDC5F2389Edb5c93CBf4EE25|2|
 
-#### About channelId and pairIndex
+#### About ChannelId and PairIndex
 
 Anyone can open a channel and make a quote on it. A channel can contain multiple price pairs (they all have the same currency unit of denomination). It is similar to a two-dimensional arrays that locates the price to be queried by channelId and pairIndex.
 
-#### About the price call fee (for now)
+#### About the Price Call Fee
 Each call to the price method needs to carry a call fee, which is allocated by the administrator of the quote channel.Current fee is 0.
 
 |Network|Fee|
@@ -271,24 +271,24 @@ Each call to the price method needs to carry a call fee, which is allocated by t
 |polygon|0MATIC|
 |KCC|0KCS|
 
-#### TriggeredPrice and LastPrice
+#### Triggered Price and Last Price
 
-triggeredPrice may be delayed by one price compared to lastPrice. In most cases, they are the same. It depends on the offer density.
-triggeredPrice requires less gas consumption, lastPrice must have the latest price, but has higher gas consumption.
+Triggered Price may be delayed by one price compared to lastPrice. In most cases, they are the same. It depends on the offer density.
+Triggered Price requires less gas consumption, lastPrice must have the latest price, but has higher gas consumption.
 
 <img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST7.png?raw=true" alt="" width="500">
 
-#### Price token and Price token unit
+#### Price Token and Price Token Unit
 
 All prices in the documentation are in 2000 USDT, which is not fixed. Each channel has its own Price token and Price token unit, please check it before calling.
 
-<a href="https://channel.nestprotocol.org/" target="_blank">Channel Information-Website</a>
+<a href="https://channel.nestprotocol.org/" target="_blank">Channel Information Website</a>
 
-<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Read channel information from the contract</a>
+<a href="https://etherscan.io/address/0xE544cF993C7d477C7ef8E91D28aCA250D135aa03#readProxyContract" target="_blank">Read Channel Information from the Contract</a>
 
 <img src="https://github.com/NEST-Protocol/NEST-Docs/raw/main/Image/NEST6.png?raw=true" alt="" width="500">
 
-#### Web display prices
+#### Web Display Prices
 
 web shows 1 ETH = 2500 USDT, get ETH price data as 800000000000000000(decimals 18), which means 2000 USDT = 0.8 ETH. Web converted to show.
 
@@ -347,7 +347,7 @@ web shows 1 ETH = 2500 USDT, get ETH price data as 800000000000000000(decimals 1
     }
 ```
 
-##### Use the average price
+##### Use the Average Price
 
 ```
     /// @dev Get price
@@ -389,7 +389,7 @@ web shows 1 ETH = 2500 USDT, get ETH price data as 800000000000000000(decimals 1
     }
 ```
 
-##### Preventing drastic price fluctuations
+##### Preventing Drastic Price Fluctuations
 
 Market prices sometimes fluctuate too much, and there are some precautions to take when using prices, such as: comparing the deviation of the instant price with the average price, and not continuing to trade if it is too large.
 
@@ -438,11 +438,9 @@ Market prices sometimes fluctuate too much, and there are some precautions to ta
 
 ## NEST Probability Virtual Machine(PVM)
 
-### Swap
-
 ### Future
 
-#### Buy future
+#### Buy Future
 ```
     function buy(
         address tokenAddress,
@@ -459,7 +457,7 @@ Market prices sometimes fluctuate too much, and there are some precautions to ta
 |orientation|bool|true: call, false: put|
 |nestAmount|uint|Amount of paid NEST|
 
-#### Sell future
+#### Sell Future
 
 ```
     function sell(uint index, uint amount) external payable override
@@ -470,7 +468,7 @@ Market prices sometimes fluctuate too much, and there are some precautions to ta
 |index|uint|Index of future|
 |amount|uint|Amount to sell|
 
-#### Settle future
+#### Settle Future
 
 ```
     function settle(uint index, address[] calldata addresses) external payable override
@@ -481,7 +479,7 @@ Market prices sometimes fluctuate too much, and there are some precautions to ta
 |addresses|address[]|Target addresses|
 
 
-#### Get information of future
+#### Get Information of Future
 future index contains a multiplier information and a call or put information.
 
 ```
@@ -506,7 +504,7 @@ future index contains a multiplier information and a call or put information.
 |orientation|bool|true: call, false: put|
 
 ### Option
-#### Open option
+#### Open Option
 
 ```
     function open(
@@ -526,7 +524,7 @@ future index contains a multiplier information and a call or put information.
 |exerciseBlock|uint|After reaching this block, the user will exercise manually, and the block will be recorded in the system using the block number|
 |nestAmount|uint|Amount of paid NEST|
 
-#### Exercise option
+#### Exercise Option
 
 ```
     function exercise(uint index, uint amount) external payable override
@@ -537,7 +535,7 @@ future index contains a multiplier information and a call or put information.
 |index|uint|Index of option|
 |amount|uint|Amount of option to exercise|
 
-#### Sell option
+#### Sell Option
 
 ```
     function sell(uint index, uint amount) external payable override
@@ -548,7 +546,7 @@ future index contains a multiplier information and a call or put information.
 |index|uint|Index of option|
 |amount|uint|Amount of option to exercise|
 
-#### Find the options of the owner (in reverse order)
+#### Find the Owner of the Options (Desc)
 
 ```
     function find(
@@ -578,7 +576,7 @@ future index contains a multiplier information and a call or put information.
 
 ### Roll
 
-#### start a roll
+#### Start a Roll
 
 ```
     function roll44(uint n, uint m) external override
@@ -589,7 +587,7 @@ future index contains a multiplier information and a call or put information.
 |n|uint|count of NEST|
 |m|uint|times, 4 decimals|
 
-#### Claim gained NEST
+#### Claim NEST Gained
 
 ```
     function claim44(uint index) external override
@@ -599,7 +597,7 @@ future index contains a multiplier information and a call or put information.
 |---|---|---|
 |index|uint|index of bet|
 
-#### Find the dices44 of the target address (in reverse order)
+#### Find the Information of the Target Address (Desc)
 
 ```
     function find44(
@@ -626,10 +624,10 @@ future index contains a multiplier information and a call or put information.
 |openBlock|uint32|the block number of bet when opened|
 |gained|uint|gained number of NEST|
 
-## Contract deloyments
+## Deloyment Addresses
 
 Contract address:
-### ETH
+### Ethereum Mainnet
 | Name | Interfaces | mainnet |
 | ---- | ---- | ---- |
 | nest | IERC20 | 0x04abEdA201850aC0124161F037Efd70c74ddC74C |
@@ -639,7 +637,7 @@ Contract address:
 | nestGovernance | INestGovernance | 0xA2eFe217eD1E56C743aeEe1257914104Cf523cf5 |
 | nestBatchPlatform2 | INestBatchMining, INestBatchPriceView, INestBatchPrice2 | 0xE544cF993C7d477C7ef8E91D28aCA250D135aa03 |
 
-### BNB
+### Binance Smart Chain Mainnet
 | Name | Interfaces | bnb_main |
 | ---- | ---- | ---- |
 | nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
@@ -657,7 +655,7 @@ Contract address:
 | nestGovernance | INestGovernance | 0x7b5ee1Dc65E2f3EDf41c798e7bd3C22283C3D4bb |
 | nestBatchMining | INestBatchMining, INestBatchPrice2, INestBatchPriceView | 0x09CE0e021195BA2c1CDE62A8B187abf810951540 |
 
-### KCC
+### KCC-MAINNET
 | Name | Interfaces | kcc_main |
 | ---- | ---- | ---- |
 | nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
@@ -667,7 +665,7 @@ Contract address:
 | nestGovernance | INestGovernance | 0x7b5ee1Dc65E2f3EDf41c798e7bd3C22283C3D4bb |
 | nestBatchMining | INestBatchMining, INestBatchPrice2, INestBatchPriceView | 0x7DBe94A4D6530F411A1E7337c7eb84185c4396e6 |
 
-## Error codes
+## Error Codes
 ### NestBuybackPool.sol
 - "NBP:not router"
 
