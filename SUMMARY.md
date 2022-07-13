@@ -4,7 +4,6 @@
 * [Technical reference](README.md#technical-reference)
     * [Smart contracts overview](README.md#smart-contracts-overview)
     * [NEST Oracle](README.md#nest-oracle)
-        * [Whitepaper](README.md#whitepaper)
         * [Mechanisms](README.md#mechanisms)
         * [Request Price(for contract)](README.md#request-pricefor-contract)
         * [Call example](README.md#call-example)

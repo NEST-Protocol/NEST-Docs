@@ -8,8 +8,6 @@ NEST is a binary smart contract system that provides developers with various sma
 
 ## NEST Oracle
 
-### Whitepaper
-
 ### Mechanisms
 #### Valuation asset and quotation asset
 
@@ -594,8 +592,95 @@ future index contains a multiplier information and a call or put information.
 ## Contract deloyments
 
 ## Error codes
+### NestBuybackPool.sol
+- "NBP:not router"
+
+### NestFutures.sol
+- "NF:too much tokenConfigs"
+- "NF:exists"
+- "NF:not exist"
+- "NF:at least 50 NEST"
+- "NF:lever must greater than 1"
+- "NF:lever too large"
+- "NF:can't convert to uint128"
+- "NF:can't convert to int128"
+- "NF:can't convert to uint"
+
+### NestOptions.sol
+- "NO:too much tokenRegistrations"
+- "NO:at maturity"
+- "NO:not owner"
+- "NO:can't convert to 64bits"
+- "NO:can't convert to int128"
+- "NO:can't convert to uint"
+- "NO:can't convert to uint112"
+- "NO:exerciseBlock too small"
+- "NO:!accounts"
+
+### NestProbability.sol
+- "NP:n or m not valid"
+- "NP:different owner"
+- "NP:!hashBlock"
+
+### NestVault.sol
+- "NV:exceeded allowance"
+
+### NestBatchMining.sol
+- "NOM:unit must > 0"
+- "NOM:token can't equal token0"
+- "NOM:token reiterated"
+- "NOM:not opener"
+- "NOM:vault error"
+- "NOM:!scale"
+- "NOM:!equivalent"
+- "NM:!takeNum"
+- "NM:!state"
+- "NOM:!fee"
+- "NM:!miner"
+- "NOM:!opener"
+- "NM:!accounts"
+- "NBM:can't convert to uint96"
 
 # Guide
+## Set Up Your Local Environment
+This guide describes how to set up your environment using a specific toolset: Node.js + npm + hardhat. It also shows you how to install the NEST contracts, which are required for the contract examples in the NEST Docs guides.
+
+## Create a Node.js Project
+1. Download and install Node.js and npm.
+2. Create a new directory and navigate to it. Also, create a new node project with npm init.
+
+## Install Hardhat
+1. Install Hardhat, a development environment to compile, deploy, test, and debug your Smart Contracts.
+
+```
+$ npm add --save-dev hardhat
+```
+
+2. Create a new hardhat config file, which you can use for compiling and testing contracts. For an example of how a typical smart contract repo is structure, select the "create a sample project" option during setup.
+
+```
+$ npx hardhat
+```
+
+## Set the Solidity Version for Hardhat
+For this example, we'll need to change ./hardhat.config.js to include the appropriate solidity version for compiling the Uniswap V3 contracts. If you are using Hardhat's example project, you can skip this step.
+
+```
+module.exports = {
+  solidity: '0.8.9',
+}
+```
+
+## Compile Your Contracts
+```
+$ npx hardhat compile
+```
+If everything worked correctly, and you used hardhat's simple example project, you should see the following output:
+```
+Downloading compiler 0.8.4
+Compiled 2 Solidity files successfully
+✨  Done in 6.75s.
+```
 
 # Contract Addresses
 #### ETH
@@ -608,8 +693,8 @@ future index contains a multiplier information and a call or put information.
 | nestGovernance | INestGovernance | 0xA2eFe217eD1E56C743aeEe1257914104Cf523cf5 |
 | nestBatchPlatform2 | INestBatchMining, INestBatchPriceView, INestBatchPrice2 | 0xE544cF993C7d477C7ef8E91D28aCA250D135aa03 |
 
-#### BSC
-| Name | Interfaces | bsc_main |
+#### BNB
+| Name | Interfaces | bnb_main |
 | ---- | ---- | ---- |
 | nest | IERC20 | 0x98f8669F6481EbB341B522fCD3663f79A3d1A6A7 |
 | pusd | IERC20 | 0x9b2689525e07406D8A6fB1C40a1b86D2cd34Cbb2 |
