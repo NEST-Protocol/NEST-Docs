@@ -1,7 +1,7 @@
 # Overview
 ## What is NEST?
 
-NEST is a binary smart contract system that provides developers with various smart contract libraries for DeFi, NFTs and GameFi development.
+NEST is a binary smart contract sDystem that provides developers with various smart contract libraries for DeFi, NFTs and GameFi development.
 
 # Guide
 ## Set Up Your Local Environment
@@ -624,7 +624,7 @@ future index contains a multiplier information and a call or put information.
 |openBlock|uint32|the block number of bet when opened|
 |gained|uint|gained number of NEST|
 
-## Deloyment Addresses
+## Contract Deployment
 
 Contract address:
 ### Ethereum Mainnet
