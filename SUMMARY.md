@@ -11,7 +11,7 @@
     * [NEST Probability Virtual Machine(PVM)](README.md#nest-probability-virtual-machinepvm)
         * [Future](README.md#future)
         * [Option](README.md#option)
-        * [Roll](README.md#lottery)
+        * [Roll](README.md#roll)
    * [Contract Deployment](README.md#contract-deployment)
    * [Error Codes](README.md#error-codes)
 
