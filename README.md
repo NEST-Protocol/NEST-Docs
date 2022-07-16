@@ -1,7 +1,7 @@
 # Overview
 ## What is NEST?
 
-NEST is a binary smart contract sDystem that provides developers with various smart contract libraries for DeFi, NFTs and GameFi development.
+NEST is a binary smart contract system that provides developers with various smart contract libraries for DeFi, NFTs and GameFi development.
 
 # Guide
 ## Set Up Your Local Environment
@@ -79,9 +79,9 @@ Quotation -> Verified Quotation -> Verified Quotation -> Verified Quotation -> â
 
 #### Mining Volume
 
-mining volume per block * number of blocks between last quotation and current quotation = mining volume of current block
+Mining Volume of Current Block = Mining Volume per Block * Number of Blocks between Last Quotation and Current Quotation
 
-mining volume of current block / number of quotations within current block = mining volume per quotation 
+Mining Volume per Quotation = Mining Volume of Current Block / Number of Quotations within Current Block
 
 Mining volume per block will be annually attenuated to a proportion of the previous year. The attenuation lasts for 10 times, after which the mining volume keeps the same amount after the 10th attenuation. The attenuation starts from the initialization of the quotation track. Ethereum is calculated according to 2,400,000 blocks per year (depending on the block generation speed of different chains), and the attenuation proportion of current active quotation track(s) is set as 80%.
 
@@ -184,9 +184,9 @@ function findPrice(
 
 > In block 14802456, 2000USDT = 0.069274BTC
 
-#### Get the Last (num) Effective Price
+#### Get the Lastest Count of Effective Prices
 
-Get the latest count of prices in effect.
+Get the latest count of effective prices.
 
 ```
 function lastPriceList(
@@ -213,9 +213,9 @@ function lastPriceList(
 
 > Read the latest 3 price information (BTC)
 
-#### Returns LastPriceList and Triggered Price Info
+#### Return LastPriceList and Triggered Price Info
 
-Returns both the lastPriceList and the triggeredPriceInfo interfaces.
+Return both the lastPriceList and the triggeredPriceInfo interfaces.
 
 ```
 function lastPriceListAndTriggeredPriceInfo(
@@ -243,7 +243,7 @@ function lastPriceListAndTriggeredPriceInfo(
 > Read the latest 3 price information (BTC),average price,volatility
 
 
-### Call Example
+### Example: Price Call
 
 The example environment is the ethereum rinkeby test network.
 
@@ -480,7 +480,7 @@ Market prices sometimes fluctuate too much, and there are some precautions to ta
 
 
 #### Get Information of Future
-future index contains a multiplier information and a call or put information.
+Future index contains a multiplier information and a call or put information.
 
 ```
     function getFutureInfo(
@@ -587,7 +587,7 @@ future index contains a multiplier information and a call or put information.
 |n|uint|count of NEST|
 |m|uint|times, 4 decimals|
 
-#### Claim NEST Gained
+#### Claim NEST
 
 ```
     function claim44(uint index) external override
