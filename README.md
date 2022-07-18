@@ -50,6 +50,8 @@ Compiled 2 Solidity files successfully
 
 ## NEST Oracle
 
+NEST Oracle is a truly decentralized oracle, check the <a href="https://www.nestprotocol.org/doc/ennestwhitepaper.pdf" target="_blank">whitepaper</a> to learn more about it.
+
 ### Mechanisms
 #### Valuation Asset and Auotation Asset
 
