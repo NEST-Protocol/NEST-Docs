@@ -2,11 +2,11 @@
 ## Set Up Your Local Environment
 This guide describes how to set up your environment using a specific toolset: Node.js + npm + hardhat. It also shows you how to use the NEST contracts, which are required for the contract examples in the NEST Docs guides.
 
-## Create a Node.js Project
+### Create a Node.js Project
 1. Download and install Node.js and npm.
 2. Create a new directory and navigate to it. Also, create a new node project with npm init.
 
-## Install Hardhat
+### Install Hardhat
 1. Install Hardhat, a development environment to compile, deploy, test, and debug your Smart Contracts.
 
 ```
@@ -19,7 +19,7 @@ $ npm add --save-dev hardhat
 $ npx hardhat
 ```
 
-## Set the Solidity Version for Hardhat
+### Set the Solidity Version for Hardhat
 For this example, we'll need to change ./hardhat.config.js to include the appropriate solidity version for compiling the NEST contracts. If you are using Hardhat's example project, you can skip this step.
 
 ```
@@ -28,7 +28,7 @@ module.exports = {
 }
 ```
 
-## Compile Your Contracts
+### Compile Your Contracts
 ```
 $ npx hardhat compile
 ```
