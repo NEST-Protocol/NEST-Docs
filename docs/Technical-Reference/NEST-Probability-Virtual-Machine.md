@@ -1,6 +1,15 @@
 ## NEST Probability Virtual Machine(PVM)
 
+### Introduction
+NEST Probability Virtual Machine (PVM) is a virtual machine-like structure based on the basic function library. Developers can develop various exciting applications based on the function library, similar to Ethereum virtual machine (EVM) programming.
+
+NEST inherited the genes of Ethereum. The essence of EVM is that each program is a combination of some basic codes, which can be called as long as a certain gas fee is paid. The income of each product on the PVM can be regarded as a linear combination of some basic income functions, and this income can be obtained as long as a certain cost (that is, the discounted value of this income) is paid. The underlying logic of PVM is the same as that of EVM, which means that all EVM development can be implemented on PVM.
+
+Check the PVM's [whitepaper](https://finance.nestprotocol.org/The_White_Paper_of_NEST_PVM.pdf) for more details.
+
 ### Future
+
+Use PVM's futures contracts to buy, sell and settle the futures.
 
 #### Buy Future
 ```
@@ -66,6 +75,9 @@ Future index contains a multiplier information and a call or put information.
 |orientation|bool|true: call, false: put|
 
 ### Option
+
+Use PVM's option contracts to open, exercise and sell the options.
+
 #### Open Option
 
 ```
@@ -137,6 +149,8 @@ Future index contains a multiplier information and a call or put information.
 |owner|address|Target address|
 
 ### Roll
+
+Play with NEST token to win more NEST for calling Roll contract.
 
 #### Start a Roll
 
