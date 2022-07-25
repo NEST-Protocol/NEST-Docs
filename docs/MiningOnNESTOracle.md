@@ -25,27 +25,24 @@ Components:
 
 ![image1](https://raw.githubusercontent.com/NEST-Protocol/NEST-Docs/main/Image/MONO1.png)
 
-#### Number of Verified Blocks
-The number of blocks the quotation needs to wait for verification, which is set globally by NEST, and varies depending on the block generating speed of different chains. Number of Verified Blocks on Ethereum mainnet is 20. 
 
-#### Effective Price
-After block verification, the weighted average of the remaining quotation prices within a block.
+#### Price Related Definition
 
-#### Last Price
-The latest effective price of the quotation token.
+ - Number of Verified Blocks: The number of blocks the quotation needs to wait for verification, which is set globally by NEST, and varies depending on the block generating speed of different chains. Number of Verified Blocks on Ethereum mainnet is 20. 
+
+- Effective Price: After block verification, the weighted average of the remaining quotation prices within a block.
+
+- Last Price: The latest effective price of the quotation token.
 
 #### Roles
-Miner
-> Received mining token rewards by way of quote. 
 
-Arbitrager
-> Corrected the quotes from miner, and got profit from price spread. 
+- Miner: Received mining token rewards by way of quote. 
 
-Channel Opener
-> Provide the information needed for a quote channel in accordance with NEST specifications, open a quote channel and  own the maintenance rights of this quote channel.
+- Arbitrager: Corrected the quotes from miner, and got profit from price spread. 
 
-Price Caller
-> Called the price provided by NEST Oracle.[The documentation of the price calling.](https://www.nestprotocol.org/#/docs/Technical-Reference/NEST-Oracle.md)
+- Channel Opener: Provide the information needed for a quote channel in accordance with NEST specifications, open a quote channel and  own the maintenance rights of this quote channel.
+
+- Price Caller: Called the price provided by NEST Oracle.[The documentation of the price calling.](https://www.nestprotocol.org/#/docs/Technical-Reference/NEST-Oracle.md)
 
 ## Mining on NEST Oracle
 Anyone could get mining rewards by providing quotes on NEST Oracle. Here is the price generation process of NEST Oracle. 
