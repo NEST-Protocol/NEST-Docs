@@ -167,7 +167,7 @@ This data could be used to calculate the total rewards of the current quote:
 ```
 
 ### Create Channel
-The price channel can be created either by building via NEST oracle website or by calling the open channel API. 
+The price channel can be created either by building via [NEST oracle website](https://channel.nestprotocol.org/) or by calling the open channel API. 
 
 The open function should be used to create a price channel. 
 
